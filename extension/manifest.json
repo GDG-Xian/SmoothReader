@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Smooth Reader",
+  "description": "A chrome extension to read page content in a cozy board.",
+  "version": "1.0",
+  "icons": {
+    "128": "icon_128.png",
+    "48": "icon_48.png",
+    "16": "icon_16.png"
+  },
+  "browser_action": {
+    "default_icon": "icon_128.png"
+  },
+  "permissions": ["activeTab"]
+}
