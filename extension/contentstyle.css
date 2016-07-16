@@ -1,0 +1,18 @@
+@keyframes highlight {
+  0% {
+      outline: #c8956e solid 4px;
+  }
+  50% {
+      outline: #976239 solid 4px;
+  }
+  100% {
+      outline: #4D321D solid 4px;
+  }
+}
+
+.crx-sr-highlight {
+  outline-offset: 1px;
+  animation: highlight 0.5s;
+  outline: #4D321D solid 4px;
+  z-index: 65535;
+}
