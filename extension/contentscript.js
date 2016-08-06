@@ -15,6 +15,13 @@ function toggleInspect(enabled) {
   chrome.runtime.sendMessage({ type: 'inspectModeChange', actived: enabled });
 }
 
+function toggleReader(enabled) {
+  $('body').toggleClass('crx-sr-reading', enabled);
+  if (!enabled) {
+    $('.crx-sr-reader').remove();
+  }
+}
+
 function highlightContent(event) {
   event.stopPropagation();
 
@@ -34,7 +41,32 @@ function messageHandler(request, sender, sendResponse) {
 function shortcutHandler(event) {
   if (event.keyCode === 27) {
     toggleInspect(false);
+    toggleReader(false);
   }
+}
+
+function showSelected(event) {
+  let content = $(event.target).html();  
+  toggleInspect(false);
+  showReader(sanitizeHtml(content));
+}
+
+function initReader() {
+  let $reader = $('.crx-sr-reader');
+  
+  if ($reader.length == 0) {
+    $reader = $('<div class="crx-sr-reader"><div class="crx-sr-reader-viewport yue"></div></div>');
+    $reader.appendTo('body');
+  }
+
+  return $reader;
+}
+
+function showReader(content) {
+  let $reader = initReader();
+
+  $reader.find('.crx-sr-reader-viewport').html(content);
+  toggleReader(true);
 }
 
 chrome.runtime.onMessage.addListener(messageHandler);
@@ -42,3 +74,5 @@ chrome.runtime.onMessage.addListener(messageHandler);
 $(document).on('mouseover', INSPECT_SEL, highlightContent);
 $(document).on('mouseout', INSPECT_SEL, unHighlightContent);
 $(document).on('keyup', shortcutHandler);
+$(document).on('click', '.crx-sr-inspecting', showSelected);
+

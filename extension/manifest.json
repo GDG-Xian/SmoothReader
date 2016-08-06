@@ -18,8 +18,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "css": ["contentstyle.css"],
-      "js": ["jquery.min.js", "contentscript.js"]
+      "css": ["yue.css", "contentstyle.css"],
+      "js": ["jquery.js", "sanitize-html.js", "contentscript.js"]
     }
   ],
   "permissions": ["tabs"]

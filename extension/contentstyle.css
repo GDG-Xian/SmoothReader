@@ -10,9 +10,40 @@
   }
 }
 
+body.crx-sr-reading {
+  overflow: hidden !important;
+}
+
 .crx-sr-highlight {
   outline-offset: 1px;
   animation: highlight 0.5s;
   outline: #4D321D solid 4px;
   z-index: 65535;
+  cursor: pointer;
+}
+
+.crx-sr-highlight * {
+  pointer-events: none;
+}
+
+.crx-sr-reader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #E0D8C9; 
+}
+
+.crx-sr-reader-viewport {
+  font-size: 22px;
+  width: 60%;
+  padding: 20px 30px;
+  margin: 30px auto;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  background: #F8F1E4;
+  opacity: 1;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+  color: #4E321E;
 }
