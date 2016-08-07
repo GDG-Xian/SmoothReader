@@ -69,10 +69,17 @@ function showReader(content) {
   toggleReader(true);
 }
 
+function hideReader(event) {
+  if ($(event.target).is('.crx-sr-reader')) {
+    toggleReader(false);
+  }
+}
+
 chrome.runtime.onMessage.addListener(messageHandler);
 
 $(document).on('mouseover', INSPECT_SEL, highlightContent);
 $(document).on('mouseout', INSPECT_SEL, unHighlightContent);
 $(document).on('keyup', shortcutHandler);
 $(document).on('click', '.crx-sr-inspecting', showSelected);
+$(document).on('click', '.crx-sr-reader', hideReader);
 
